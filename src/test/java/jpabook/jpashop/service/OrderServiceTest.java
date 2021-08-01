@@ -12,10 +12,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -88,9 +92,6 @@ public class OrderServiceTest {
 		Order getOrder = orderRepository.findOne(orderId);
 		assertEquals("주문 취소시 상태는 CANCEL",OrderStatus.CANCEL, getOrder.getStatus());
 		assertEquals("주문이 취소된 상품은 그만큼 재고가 증가해야 한다.", 10, item.getStockQuantity());
-
-
-
 	}
 
 	private Book createBook(String name, int price, int stockQuantity) {

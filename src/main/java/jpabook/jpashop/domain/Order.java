@@ -16,7 +16,7 @@ import static javax.persistence.FetchType.LAZY;
 @Table(name = "orders")
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class Order {
 
 	@Id
